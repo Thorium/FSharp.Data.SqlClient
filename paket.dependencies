@@ -1,15 +1,15 @@
 source https://www.nuget.org/api/v2/
 generate_load_scripts: on
 storage: none
-github fsprojects/FSharp.TypeProviders.SDK:28a24a69ada68ebd1ad25226634f4608e4875493 src/ProvidedTypes.fs
-github fsprojects/FSharp.TypeProviders.SDK:28a24a69ada68ebd1ad25226634f4608e4875493 src/ProvidedTypes.fsi
-github fsprojects/FSharp.TypeProviders.SDK:28a24a69ada68ebd1ad25226634f4608e4875493 src/ProvidedTypesTesting.fs
+github fsprojects/FSharp.TypeProviders.SDK:23b588d06acb8e100402523abc1d4f3f06325b8a src/ProvidedTypes.fs
+github fsprojects/FSharp.TypeProviders.SDK:23b588d06acb8e100402523abc1d4f3f06325b8a src/ProvidedTypes.fsi
+github fsprojects/FSharp.TypeProviders.SDK:23b588d06acb8e100402523abc1d4f3f06325b8a src/ProvidedTypesTesting.fs
 
 group Build
 	source https://www.nuget.org/api/v2/
 	
 	nuget Fun.Build
-	nuget FSharp.Core
+	nuget FSharp.Core 8.0.301
 	
 	nuget Fake.Core.Process
 	nuget Fake.Core.ReleaseNotes
@@ -21,6 +21,8 @@ group Build
 	nuget Fake.DotNet.NuGet
 	nuget Fake.DotNet.Testing.XUnit2
 	nuget Fake.Tools.Git
+	nuget FSharp.Formatting
+	nuget FSharp.Compiler.Service 43.8.301
 
 	nuget NuGet.CommandLine
 	nuget System.Data.SqlClient
