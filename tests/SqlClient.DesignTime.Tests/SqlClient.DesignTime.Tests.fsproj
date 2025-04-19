@@ -16,7 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Condition="$(TargetFramework) == 'net462'" Include="FSharp.Data.SqlClient.DesignTime">
-      <HintPath>..\..\bin\typeproviders\fsharp41\net461\FSharp.Data.SqlClient.DesignTime.dll</HintPath>
+      <HintPath>..\..\bin\typeproviders\fsharp41\net462\FSharp.Data.SqlClient.DesignTime.dll</HintPath>
     </Reference>
     <Reference Condition="$(TargetFramework) == 'net8.0'" Include="FSharp.Data.SqlClient.DesignTime">
       <HintPath>..\..\bin\typeproviders\fsharp41\net8.0\FSharp.Data.SqlClient.DesignTime.dll</HintPath>
