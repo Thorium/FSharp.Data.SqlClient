@@ -40,14 +40,14 @@ group Docs
 
 group DesignTime
 	source https://www.nuget.org/api/v2/
-	framework: >= net461, >= netstandard20, net8.0
+	framework: >= net462, >= netstandard20, net8.0
 	storage: none
 
-	nuget System.Configuration.ConfigurationManager
+    nuget System.Configuration.ConfigurationManager 9.0.4
 	nuget System.Data.Common
 	nuget System.Data.SqlClient
 	nuget System.Runtime.Caching
-	nuget FSharp.Core
+    nuget FSharp.Core 8.0.301
 	nuget Microsoft.SqlServer.TransactSql.ScriptDom
 	nuget Microsoft.SqlServer.Types
 	
@@ -65,27 +65,27 @@ group Test
 
 group Net40
 	source https://www.nuget.org/api/v2/
-	framework: net40
+	framework: net462
 	storage: none
 
-	nuget FSharp.Core = 4.1.18
+	nuget FSharp.Core = 8.0.301
 
 group TestProjects
 	source https://www.nuget.org/api/v2/
-	framework: >= net40, >= netcoreapp2.0, >= netstandard2.0, net8.0
+	framework: >= net462, >= netcoreapp2.0, >= netstandard2.0, net8.0
 	storage: none
 
-	nuget FSharp.Core = 4.3.4
+	nuget FSharp.Core = 8.0.301
 
 	nuget System.Data.SqlClient
 	nuget System.Configuration.ConfigurationManager
 
 group Samples
 	source https://www.nuget.org/api/v2/
-	framework: >= net40, >= netcoreapp2.0, >= netstandard2.0, net8.0
+	framework: >= net462, >= netcoreapp2.0, >= netstandard2.0, net8.0
 	redirects: on
 	
-	nuget FSharp.Core = 4.5.2 redirects: force
+	nuget FSharp.Core = 8.0.301 redirects: force
 	
 	nuget Microsoft.AspNet.WebApi
 	nuget Microsoft.AspNet.WebApi.Client
