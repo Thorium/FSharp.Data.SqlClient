@@ -2,9 +2,8 @@ GENERATE-LOAD-SCRIPTS: ON
 STORAGE: NONE
 GITHUB
   remote: fsprojects/FSharp.TypeProviders.SDK
-    src/ProvidedTypes.fs (28a24a69ada68ebd1ad25226634f4608e4875493)
-    src/ProvidedTypes.fsi (28a24a69ada68ebd1ad25226634f4608e4875493)
-    src/ProvidedTypesTesting.fs (28a24a69ada68ebd1ad25226634f4608e4875493)
+    src/ProvidedTypes.fs (23b588d06acb8e100402523abc1d4f3f06325b8a)
+    src/ProvidedTypes.fsi (23b588d06acb8e100402523abc1d4f3f06325b8a)
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
