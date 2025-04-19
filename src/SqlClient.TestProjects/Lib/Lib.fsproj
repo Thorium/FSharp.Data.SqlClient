@@ -26,7 +26,7 @@
       <HintPath>..\..\..\bin\netstandard2.0\FSharp.Data.SqlClient.dll</HintPath>
     </Reference>
     <Reference Condition="'$(TargetFramework)' == 'net471'" Include="FSharp.Data.SqlClient">
-      <HintPath>..\..\..\bin\net40\FSharp.Data.SqlClient.dll</HintPath>
+      <HintPath>..\..\..\bin\net462\FSharp.Data.SqlClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="..\..\..\.paket\Paket.Restore.targets" />
