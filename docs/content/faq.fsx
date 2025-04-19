@@ -103,7 +103,7 @@ With a datareader obtained from a custom command you can still reuse the typed r
 let getDatesQuery = "SELECT GETDATE() AS Now, GETUTCDATE() AS UtcNow"
 type GetDates = SqlCommandProvider<getDatesQuery,  connectionString>
 
-open System.Data.SqlClient
+open Microsoft.Data.SqlClient
 type SqlDataReader with
     member this.ToRecords<'T>() = 
         seq {

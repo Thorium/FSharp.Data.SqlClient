@@ -3,7 +3,7 @@
 open System
 open System.Reflection
 open System.Data
-open System.Data.SqlClient
+open Microsoft.Data.SqlClient
 open Microsoft.SqlServer.Server
 open System.Collections.Generic
 open System.Diagnostics
@@ -547,16 +547,16 @@ type DesignTime private() =
                             | "datetimeoffset", SqlDbType.DateTimeOffset
                             | "time"          , SqlDbType.Time ->
                                 // https://github.com/fsprojects/FSharp.Data.SqlClient/issues/393
-                                <@@ SqlMetaData(name, dbType, 0uy, scale) @@>
+                                <@@ Microsoft.SqlServer.Server.SqlMetaData(name, dbType, 0uy, scale) @@>
                             | _ ->
                                 // https://github.com/fsprojects/FSharp.Data.SqlClient/issues/345
                                 if scale = 0uy then
-                                    <@@ SqlMetaData(name, dbType) @@>
+                                    <@@ Microsoft.SqlServer.Server.SqlMetaData(name, dbType) @@>
                                 else
-                                    <@@ SqlMetaData(name, dbType, precision, scale) @@>
+                                    <@@ Microsoft.SqlServer.Server.SqlMetaData(name, dbType, precision, scale) @@>
                         else 
                             let maxLength = int64 p.MaxLength
-                            <@@ SqlMetaData(name, dbType, maxLength) @@>
+                            <@@ Microsoft.SqlServer.Server.SqlMetaData(name, dbType, maxLength) @@>
                     yield param, sqlMeta
             ] 
 

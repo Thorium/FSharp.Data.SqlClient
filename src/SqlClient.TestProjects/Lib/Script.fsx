@@ -1,3 +1,4 @@
+﻿#r "nuget: Microsoft.Data.SqlClient"
 #r @"..\..\..\bin\net462\FSharp.Data.SqlClient.dll"
 #r @"bin\Debug\Lib.dll"
 #r @"System.Configuration"

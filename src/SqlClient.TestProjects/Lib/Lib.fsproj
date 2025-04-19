@@ -18,7 +18,11 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="netstandard" />
+    <PackageReference Include="FSharp.Core" Version="8.0.301" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+
     <Reference Condition="'$(TargetFramework)' == 'net8.0'" Include="FSharp.Data.SqlClient">
       <HintPath>..\..\..\bin\net8.0\FSharp.Data.SqlClient.dll</HintPath>
     </Reference>
