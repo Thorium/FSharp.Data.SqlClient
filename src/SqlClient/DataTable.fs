@@ -38,7 +38,7 @@ type DataTable<'T when 'T :> DataRow>(selectCommand: SqlCommand, ?connectionStri
 
     member __.NewRow(): 'T = downcast base.NewRow()
 
-    member private this.IsDirectTable = this.TableName <> null
+    member private this.IsDirectTable = not (isNull this.TableName)
     
     member this.Update(?connection, ?transaction, ?batchSize, ?continueUpdateOnError, ?timeout: TimeSpan) = 
         // not supported on all DataTable instances
@@ -49,7 +49,7 @@ type DataTable<'T when 'T :> DataRow>(selectCommand: SqlCommand, ?connectionStri
         connection |> Option.iter selectCommand.set_Connection
         transaction |> Option.iter selectCommand.set_Transaction 
         
-        if selectCommand.Connection = null && this.IsDirectTable 
+        if isNull selectCommand.Connection && this.IsDirectTable 
         then 
             assert(connectionString.IsSome)
             selectCommand.Connection <- new SqlConnection( connectionString.Value.Value)

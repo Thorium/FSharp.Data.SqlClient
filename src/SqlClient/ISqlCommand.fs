@@ -107,7 +107,7 @@ type ``ISqlCommand Implementation``(cfg: DesignTimeConfig, connection: Connectio
                 notImplemented, 
                 notImplemented
             | rowMapping, itemTypeName ->
-                assert (rowMapping <> null && itemTypeName <> null)
+                assert ((not(isNull rowMapping)) && (not (isNull itemTypeName)))
                 let itemType = Type.GetType( itemTypeName, throwOnError = true)
                 
                 let executeHandle = 
