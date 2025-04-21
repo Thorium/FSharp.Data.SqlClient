@@ -20,7 +20,7 @@
     <WarningsNotAsErrors>$(WarningsNotAsErrors);FS0026;FS3218;FS3548</WarningsNotAsErrors>
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
     <DisableImplicitSystemValueTupleReference>true</DisableImplicitSystemValueTupleReference>
-    <DefineConstants>$(DefineConstants);DESIGNTIME_CODE_ONLY;WITH_LEGACY_NAMESPACE</DefineConstants>
+    <DefineConstants>$(DefineConstants);DESIGNTIME_CODE_ONLY;IS_DESIGNTIME;WITH_LEGACY_NAMESPACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <!--
@@ -33,7 +33,7 @@
     -->
 
   </ItemGroup>
-  <!--<ItemGroup Condition="$(TargetFramework) == 'net40'">
+  <!--<ItemGroup Condition="$(TargetFramework) == 'net462'">
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
   </ItemGroup>
