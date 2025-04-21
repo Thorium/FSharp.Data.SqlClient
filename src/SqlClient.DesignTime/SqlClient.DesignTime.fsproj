@@ -20,20 +20,18 @@
     <WarningsNotAsErrors>$(WarningsNotAsErrors);FS0026;FS3218;FS3548</WarningsNotAsErrors>
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
     <DisableImplicitSystemValueTupleReference>true</DisableImplicitSystemValueTupleReference>
-    <DefineConstants>$(DefineConstants);DESIGNTIME_CODE_ONLY;WITH_LEGACY_NAMESPACE</DefineConstants>
+    <DefineConstants>$(DefineConstants);DESIGNTIME_CODE_ONLY;IS_DESIGNTIME;WITH_LEGACY_NAMESPACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <!--
     <PackageReference Include="FSharp.Core" Version="8.0.301" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
-    <PackageReference Include="Microsoft.SqlServer.TransactSql.ScriptDom" Version="14.0.3811.1" />
-    <PackageReference Include="Microsoft.SqlServer.Types" Version="12.0.5000" />
+    <!--<PackageReference Include="Microsoft.SqlServer.TransactSql.ScriptDom" Version="14.0.3811.1" />-->
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-    -->
-
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+    <PackageReference Include="System.Text.Json" Version="9.0.4" />
   </ItemGroup>
-  <!--<ItemGroup Condition="$(TargetFramework) == 'net40'">
+  <!--<ItemGroup Condition="$(TargetFramework) == 'net462'">
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
   </ItemGroup>

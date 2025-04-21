@@ -1,2 +1,8 @@
 group Net40
     FSharp.Core
+    System.Data.SqlClient
+    Microsoft.Data.SqlClient
+    System.Configuration.ConfigurationManager
+    System.Text.Json
+    Microsoft.SqlServer.Server
+

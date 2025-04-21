@@ -2,6 +2,10 @@ group Test
 	FSharp.Core
 	Microsoft.Data.SqlClient
 	System.Configuration.ConfigurationManager
+    System.Data.SqlClient
+    System.Text.Json
+    Microsoft.SqlServer.Server
+	Microsoft.SqlServer.Types
 
 	Newtonsoft.Json
 	xunit

@@ -572,7 +572,7 @@ type DesignTime private() =
 
                 //done via reflection because not implemented on Mono
                 let sqlDataRecordType = typeof<SqlCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
-                let record = Activator.CreateInstance(sqlDataRecordType, args = [| %%Expr.Coerce(Expr.NewArray(typeof<SqlMetaData>, sqlMetas), typeof<obj>) |])
+                let record = Activator.CreateInstance(sqlDataRecordType, args = [| %%Expr.Coerce(Expr.NewArray(typeof<Microsoft.SqlServer.Server.SqlMetaData>, sqlMetas), typeof<obj>) |])
                 sqlDataRecordType.GetMethod("SetValues").Invoke(record, [| values |]) |> ignore
 
                 record

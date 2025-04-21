@@ -3,3 +3,7 @@ group TestProjects
     System.Data.SqlClient
     Microsoft.Data.SqlClient
     System.Configuration.ConfigurationManager
+    System.Text.Json
+    Microsoft.SqlServer.Server
+
+

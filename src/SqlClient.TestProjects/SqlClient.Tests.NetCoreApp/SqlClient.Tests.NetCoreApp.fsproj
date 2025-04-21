@@ -7,8 +7,16 @@
     <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="8.0.301" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.4" />
+    <!--<PackageReference Include="Microsoft.SqlServer.TransactSql.ScriptDom" Version="14.0.3811.1" />-->
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+    <PackageReference Include="System.Text.Json" Version="9.0.4" />
+
     <Reference Include="FSharp.Data.SqlClient">
-      <HintPath>..\..\..\bin\netstandard2.0\FSharp.Data.SqlClient.dll</HintPath>
+      <HintPath>..\..\..\bin\net8.0\FSharp.Data.SqlClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

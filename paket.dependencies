@@ -1,8 +1,8 @@
 source https://www.nuget.org/api/v2/
 generate_load_scripts: on
 storage: none
-github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi
-github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fs
+github fsprojects/FSharp.TypeProviders.SDK:23b588d06acb8e100402523abc1d4f3f06325b8a src/ProvidedTypes.fsi
+github fsprojects/FSharp.TypeProviders.SDK:23b588d06acb8e100402523abc1d4f3f06325b8a src/ProvidedTypes.fs
 
 group Build
 	source https://www.nuget.org/api/v2/
@@ -50,19 +50,23 @@ group DesignTime
     nuget FSharp.Core 8.0.301
 	nuget Microsoft.SqlServer.TransactSql.ScriptDom
 	nuget Microsoft.SqlServer.Types
+	nuget System.Text.Json
+	nuget Microsoft.SqlServer.Server
 	
 group Test
 	source https://www.nuget.org/api/v2/
 
 	nuget FSharp.Core redirects:force
     nuget Microsoft.Data.SqlClient 6.0.1
-	nuget System.Data.SqlClient
-	nuget System.Configuration.ConfigurationManager
+    nuget System.Data.SqlClient
+    nuget System.Configuration.ConfigurationManager
 	
-	nuget Microsoft.SqlServer.Types ~> 12
+    nuget Microsoft.SqlServer.Types
 	nuget Newtonsoft.Json
 	nuget xunit = 2.4.1
 	nuget xunit.runner.visualstudio = 2.4.1
+	nuget System.Text.Json
+	nuget Microsoft.SqlServer.Server
 
 group Net40
 	source https://www.nuget.org/api/v2/
@@ -70,6 +74,11 @@ group Net40
 	storage: none
 
 	nuget FSharp.Core = 8.0.301
+    nuget Microsoft.Data.SqlClient 6.0.1
+    nuget System.Configuration.ConfigurationManager 9.0.4
+	nuget Microsoft.SqlServer.Server
+	nuget System.Text.Json
+	nuget System.Data.SqlClient
 
 group TestProjects
 	source https://www.nuget.org/api/v2/
@@ -81,6 +90,8 @@ group TestProjects
 
 	nuget System.Data.SqlClient
 	nuget System.Configuration.ConfigurationManager
+	nuget System.Text.Json
+	nuget Microsoft.SqlServer.Server
 
 group Samples
 	source https://www.nuget.org/api/v2/
@@ -99,4 +110,4 @@ group Samples
 
 	nuget Newtonsoft.Json redirects: force
 	nuget FSharp.Data.SqlClient
-	
+	nuget Microsoft.SqlServer.Server

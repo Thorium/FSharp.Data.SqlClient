@@ -8,5 +8,5 @@ System.Runtime.Caching
 Microsoft.SqlServer.TransactSql.ScriptDom
 Microsoft.SqlServer.Types
 Microsoft.SqlServer.Server
-
+System.Text.Json
 

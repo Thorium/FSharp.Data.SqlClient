@@ -1,5 +1,4 @@
 group Build
-
 Fun.Build
 Fake.Core.Process
 Fake.Core.ReleaseNotes
@@ -10,10 +9,8 @@ Fake.DotNet.Cli
 Fake.DotNet.MSBuild
 Fake.DotNet.NuGet
 Fake.DotNet.Testing.XUnit2
-
 Fake.Tools.Git
 FSharp.Core
 FSharp.Formatting
 NuGet.CommandLine
 System.Data.SqlClient
-System.Configuration.ConfigurationManager
