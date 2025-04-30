@@ -7,7 +7,7 @@ open System.Collections.Generic
 open FSharp.Data.SqlClient.Internals
 
 [<Sealed>]
-//[<CompilerMessageAttribute("This API supports the FSharp.Data.SqlClient infrastructure and is not intended to be used directly from your code.", 101, IsHidden = true)>]
+[<CompilerMessageAttribute("This API supports the FSharp.Data.SqlClient infrastructure and is not intended to be used directly from your code.", 101, IsHidden = true)>]
 [<RequireQualifiedAccessAttribute>]
 type DataTable<'T when 'T :> DataRow>(selectCommand: SqlCommand, ?connectionString: Lazy<string>) = 
     inherit DataTable()
