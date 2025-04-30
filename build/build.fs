@@ -314,7 +314,7 @@ Target.create "NuGet" (fun _ ->
             ReleaseNotes = releaseNotes
             Tags = tags
             OutputPath = "nuget"
-            ToolPath = nugetPath
+            //ToolPath = nugetPath
             AccessKey = Fake.Core.Environment.environVarOrDefault "nugetkey" ""
             Publish = Fake.Core.Environment.hasEnvironVar "nugetkey"
             Dependencies = [] })

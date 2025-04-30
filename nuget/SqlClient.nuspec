@@ -24,19 +24,22 @@
     <dependencies>
       <group targetFramework="net462">
         <dependency id="FSharp.Core" version="8.0.301" />
-        <dependency id="Microsoft.Data.SqlClient" version="6.0.1" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.2.2" />
+		<dependency id="Microsoft.Identity.Client" version="4.71" />
       </group>
       <group targetFramework="netstandard2.0">
         <dependency id="FSharp.Core" version="8.0.301" />
         <dependency id="System.Data.SqlClient" version="4.9.0" />
-        <dependency id="Microsoft.Data.SqlClient" version="6.0.1" />
-        <dependency id="System.Configuration.ConfigurationManager" version="9.0.4" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.2.2" />
+        <dependency id="System.Configuration.ConfigurationManager" version="8.0.0" />
+		<dependency id="Microsoft.Identity.Client" version="4.71" />
       </group>
       <group targetFramework="net8.0">
         <dependency id="FSharp.Core" version="8.0.301" />
         <dependency id="System.Data.SqlClient" version="4.9.0" />
-        <dependency id="Microsoft.Data.SqlClient" version="6.0.1" />
-        <dependency id="System.Configuration.ConfigurationManager" version="9.0.4" />
+        <dependency id="Microsoft.Data.SqlClient" version="5.2.2" />
+        <dependency id="System.Configuration.ConfigurationManager" version="8.0.0" />
+		<dependency id="Microsoft.Identity.Client" version="4.71" />
       </group>
     </dependencies>
   </metadata>

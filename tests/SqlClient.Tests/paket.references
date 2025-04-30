@@ -6,6 +6,7 @@ group Test
     System.Text.Json
     Microsoft.SqlServer.Server
 	Microsoft.SqlServer.Types
+	Microsoft.Identity.Client
 
 	Newtonsoft.Json
 	xunit

@@ -30,6 +30,7 @@ type SqlCommandProvider(config : TypeProviderConfig) as this =
 
     let nameSpace = this.GetType().Namespace
     let assembly = Assembly.GetExecutingAssembly()
+    let _ = FixReferenceAssemblies.manualLoadNet8Runtime.Force()
     let providerType = ProvidedTypeDefinition(assembly, nameSpace, "SqlCommandProvider", Some typeof<obj>, hideObjectMethods = true)
 
     let cache = new Cache<ProvidedTypeDefinition>()
@@ -79,12 +80,12 @@ type SqlCommandProvider(config : TypeProviderConfig) as this =
 
         this.AddNamespace(nameSpace, [ providerType ])
 
-    override this.ResolveAssembly args = 
-        config.ReferencedAssemblies 
-        |> Array.tryFind (fun x -> AssemblyName.ReferenceMatchesDefinition(AssemblyName.GetAssemblyName x, AssemblyName args.Name)) 
-        |> Option.map Assembly.LoadFrom
-        |> defaultArg 
-        <| base.ResolveAssembly args
+    //override this.ResolveAssembly args = 
+    //    config.ReferencedAssemblies 
+    //    |> Array.tryFind (fun x -> AssemblyName.ReferenceMatchesDefinition(AssemblyName.GetAssemblyName x, AssemblyName args.Name)) 
+    //    |> Option.map Assembly.LoadFrom
+    //    |> defaultArg 
+    //    <| base.ResolveAssembly args
 
     member internal this.CreateRootType(typeName, sqlStatement, connectionStringOrName: string, resultType, singleRow, configFile, allParametersOptional, dataDirectory, tempTableDefinitions, tableVarMapping) = 
 

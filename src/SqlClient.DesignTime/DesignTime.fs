@@ -571,7 +571,7 @@ type DesignTime private() =
                 //record.SetValues(values) |> ignore
 
                 //done via reflection because not implemented on Mono
-                let sqlDataRecordType = typeof<SqlCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
+                let sqlDataRecordType = typeof<System.Data.IDbCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
                 let record = Activator.CreateInstance(sqlDataRecordType, args = [| %%Expr.Coerce(Expr.NewArray(typeof<Microsoft.SqlServer.Server.SqlMetaData>, sqlMetas), typeof<obj>) |])
                 sqlDataRecordType.GetMethod("SetValues").Invoke(record, [| values |]) |> ignore
 
@@ -800,3 +800,56 @@ type DesignTime private() =
                 | None -> m.Groups.[0].Value))
 
         (vars |> Array.map(fun (name,typ) -> sprintf "DECLARE %s%s %s = @%s" Prefixes.tableVar name typ name) |> String.concat "; ") + "; " + commandText
+
+/// Taken from SQLProvider: https://github.com/fsprojects/SQLProvider/blob/master/src/SQLProvider.DesignTime/SqlDesignTime.fs#L1262
+/// The idea of this is trying to avoid case where compile-time has loaded non-runtime assembly. (Happens in .NET 8.0, not in .NET Framework.)
+/// So let's load compile-time (and design-time) manually the required runtime assembly.
+module internal FixReferenceAssemblies =
+    AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows", true); // No Windows SNI in design-time
+
+    let manualLoadNet8Runtime =
+        lazy
+            let isWindows = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows)
+
+            let addPath (libName:string) = System.IO.Path.Combine [| "runtimes"; (if isWindows then "win" else "unix"); "lib"; "net8.0"; libName |]
+            let libraries =
+                [|
+                    "System.Data.SqlClient.dll"
+                    "System.Diagnostics.EventLog.dll" 
+                    "System.Diagnostics.EventLog.Messages.dll" 
+                    "System.Runtime.Caching.dll" 
+                    "System.Security.Cryptography.Pkcs.dll" 
+                    "Microsoft.Data.SqlClient.dll" 
+                |] |> Array.map addPath
+
+            let pathsToSeek =
+                let ifNotNull (x:Assembly) =
+                    if isNull x then ""
+                    elif String.IsNullOrWhiteSpace x.Location then ""
+                    else x.Location |> System.IO.Path.GetDirectoryName
+
+                [__SOURCE_DIRECTORY__;
+    #if !INTERACITVE
+                   Assembly.GetExecutingAssembly() |> ifNotNull;
+    #endif
+                   Environment.CurrentDirectory;
+                   System.Reflection.Assembly.GetEntryAssembly() |> ifNotNull;]
+
+            let tryLoad (asmPath:string) =
+                // Only Net8.0 compile-time need fixing. Path doesn't exist in other targetFrameworks.
+                if not (System.IO.Directory.Exists asmPath) then 
+                    ()
+                else
+                    let checkAndLoad (file:string) =
+                        let fileToSeek = asmPath + System.IO.Path.DirectorySeparatorChar.ToString() + file
+                        if System.IO.File.Exists (fileToSeek) then
+                            try
+                                Assembly.LoadFrom fileToSeek |> ignore
+                            with
+                            | e ->
+                                ()
+                        ()
+                    libraries |> Array.iter checkAndLoad
+                    ()
+            pathsToSeek |> List.iter tryLoad
+            true

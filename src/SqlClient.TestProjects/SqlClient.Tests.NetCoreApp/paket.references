@@ -3,3 +3,4 @@ group TestProjects
     System.Data.SqlClient
     Microsoft.Data.SqlClient
     System.Configuration.ConfigurationManager
+    Microsoft.Identity.Client

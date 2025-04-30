@@ -26,7 +26,7 @@ group Build
 	nuget NuGet.CommandLine
 	nuget System.Data.SqlClient
 	
-	nuget System.Configuration.ConfigurationManager
+	nuget System.Configuration.ConfigurationManager 8.0.0
 
 group Docs
 	source https://www.nuget.org/api/v2/
@@ -39,11 +39,10 @@ group Docs
 
 group DesignTime
 	source https://www.nuget.org/api/v2/
-	framework: >= net462, >= netstandard20, net8.0
 	storage: none
 
-    nuget Microsoft.Data.SqlClient 6.0.1
-    nuget System.Configuration.ConfigurationManager 9.0.4
+    nuget Microsoft.Data.SqlClient 5.2.2
+	nuget System.Configuration.ConfigurationManager 8.0.0
 	nuget System.Data.Common
 	nuget System.Data.SqlClient
 	nuget System.Runtime.Caching
@@ -57,9 +56,9 @@ group Test
 	source https://www.nuget.org/api/v2/
 
 	nuget FSharp.Core redirects:force
-    nuget Microsoft.Data.SqlClient 6.0.1
+    nuget Microsoft.Data.SqlClient 5.2.2
     nuget System.Data.SqlClient
-    nuget System.Configuration.ConfigurationManager
+	nuget System.Configuration.ConfigurationManager 8.0.0
 	
     nuget Microsoft.SqlServer.Types
 	nuget Newtonsoft.Json
@@ -70,32 +69,29 @@ group Test
 
 group Net40
 	source https://www.nuget.org/api/v2/
-	framework: net462
 	storage: none
 
 	nuget FSharp.Core = 8.0.301
-    nuget Microsoft.Data.SqlClient 6.0.1
-    nuget System.Configuration.ConfigurationManager 9.0.4
+    nuget Microsoft.Data.SqlClient 5.2.2
+    nuget System.Configuration.ConfigurationManager 8.0.0
 	nuget Microsoft.SqlServer.Server
 	nuget System.Text.Json
 	nuget System.Data.SqlClient
 
 group TestProjects
 	source https://www.nuget.org/api/v2/
-	framework: >= net462, >= netcoreapp2.0, >= netstandard2.0, net8.0
 	storage: none
 
 	nuget FSharp.Core = 8.0.301
-    nuget Microsoft.Data.SqlClient 6.0.1
+    nuget Microsoft.Data.SqlClient 5.2.2
 
 	nuget System.Data.SqlClient
-	nuget System.Configuration.ConfigurationManager
+    nuget System.Configuration.ConfigurationManager 8.0.0
 	nuget System.Text.Json
 	nuget Microsoft.SqlServer.Server
 
 group Samples
 	source https://www.nuget.org/api/v2/
-	framework: >= net462, >= netcoreapp2.0, >= netstandard2.0, net8.0
 	redirects: on
 	
 	nuget FSharp.Core = 8.0.301 redirects: force
@@ -105,7 +101,7 @@ group Samples
 	nuget Microsoft.AspNet.WebApi.Core
 	nuget Microsoft.AspNet.WebApi.WebHost
     nuget System.Data.SqlClient
-    nuget Microsoft.Data.SqlClient 6.0.1
+    nuget Microsoft.Data.SqlClient 5.2.2
 	nuget Microsoft.SqlServer.Types
 
 	nuget Newtonsoft.Json redirects: force

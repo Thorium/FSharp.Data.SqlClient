@@ -15,6 +15,7 @@ type SingleRootTypeProvider(config: TypeProviderConfig, providerName, parameters
         let isErased = defaultArg isErased true
         let nameSpace = this.GetType().Namespace
         let assembly = Assembly.GetExecutingAssembly()
+        let _ = FixReferenceAssemblies.manualLoadNet8Runtime.Force()
 
         let providerType = ProvidedTypeDefinition(assembly, nameSpace, providerName, Some typeof<obj>, hideObjectMethods = true, isErased = isErased)
 

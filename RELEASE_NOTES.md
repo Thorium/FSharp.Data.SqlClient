@@ -1,3 +1,8 @@
+#### 2.2.0 April 30, 2025
+
+* Using Microsoft.Data.SqlClient
+* NET 8.0 compatibility
+
 #### 2.1.2 May 08, 2022
 
 * Issue #420 fix "TVP Column Ordering is incorrect as of version 2.1.0"

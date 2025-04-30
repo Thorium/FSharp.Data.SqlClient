@@ -230,11 +230,11 @@ type ``ISqlCommand Implementation``(cfg: DesignTimeConfig, connection: Connectio
                     | SqlDbType.Structured -> 
                         // TODO: Maybe make this lazy?
 
-                        //p.Value <- value |> unbox |> Seq.cast<Microsoft.SqlServer.Server.SqlDataRecord>
+                        //p.Value <- value |> unbox |> Seq.cast<System.SqlServer.Server.SqlDataRecord>
 
                         //done via reflection because not implemented on Mono
                         
-                        let sqlDataRecordType = typeof<SqlCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
+                        let sqlDataRecordType = typeof<IDbCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
                         let records = typeof<Linq.Enumerable>.GetMethod("Cast").MakeGenericMethod(sqlDataRecordType).Invoke(null, [| value |]) 
                         let hasAny = 
                             let anyMeth = 

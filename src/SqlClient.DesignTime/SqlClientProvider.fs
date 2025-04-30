@@ -22,6 +22,7 @@ type SqlProgrammabilityProvider(config : TypeProviderConfig) as this =
 
     let assembly = Assembly.GetExecutingAssembly()
     let nameSpace = this.GetType().Namespace
+    let _ = FixReferenceAssemblies.manualLoadNet8Runtime.Force()
     let providerType = ProvidedTypeDefinition(assembly, nameSpace, "SqlProgrammabilityProvider", Some typeof<obj>, hideObjectMethods = true)
 
     let cache = new Cache<ProvidedTypeDefinition>()
@@ -59,12 +60,12 @@ type SqlProgrammabilityProvider(config : TypeProviderConfig) as this =
 
         this.AddNamespace(nameSpace, [ providerType ])
 
-    override this.ResolveAssembly args = 
-        config.ReferencedAssemblies 
-        |> Array.tryFind (fun x -> AssemblyName.ReferenceMatchesDefinition(AssemblyName.GetAssemblyName x, AssemblyName args.Name)) 
-        |> Option.map Assembly.LoadFrom
-        |> defaultArg 
-        <| base.ResolveAssembly args
+    //override this.ResolveAssembly args = 
+    //    config.ReferencedAssemblies 
+    //    |> Array.tryFind (fun x -> AssemblyName.ReferenceMatchesDefinition(AssemblyName.GetAssemblyName x, AssemblyName args.Name)) 
+    //    |> Option.map Assembly.LoadFrom
+    //    |> defaultArg 
+    //    <| base.ResolveAssembly args
 
     member internal this.CreateRootType( typeName, connectionStringOrName, configFile, dataDirectory, useReturnValue, resultType) =
         if String.IsNullOrWhiteSpace connectionStringOrName then invalidArg "ConnectionStringOrName" "Value is empty!" 

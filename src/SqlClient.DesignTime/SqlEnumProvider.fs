@@ -21,6 +21,7 @@ type SqlEnumProvider(config : TypeProviderConfig) as this =
 
     let nameSpace = this.GetType().Namespace
     let assembly = Assembly.GetExecutingAssembly()
+    let _ = FixReferenceAssemblies.manualLoadNet8Runtime.Force()
     let providerType = ProvidedTypeDefinition(assembly, nameSpace, "SqlEnumProvider", Some typeof<obj>, hideObjectMethods = true, isErased = false)
     // let tempAssembly = ProvidedAssembly()
     // do tempAssembly.AddTypes [providerType]
@@ -66,7 +67,7 @@ type SqlEnumProvider(config : TypeProviderConfig) as this =
         let tempAssembly = ProvidedAssembly()
 
         let providedEnumType = ProvidedTypeDefinition(tempAssembly, nameSpace, typeName, baseType = Some typeof<obj>, hideObjectMethods = true, isErased = false)
-                
+        
         let connStr, providerName = 
             match DesignTimeConnectionString.Parse(connectionStringOrName, config.ResolutionFolder, configFile) with
             | Literal value -> value, provider
@@ -74,9 +75,16 @@ type SqlEnumProvider(config : TypeProviderConfig) as this =
 
 #if !USE_SYSTEM_DATA_COMMON_DBPROVIDERFACTORIES
         // not supported on netstandard 20?
-        raise ("DbProviderFactories not available" |> NotImplementedException) 
+        //raise ("DbProviderFactories not available" |> NotImplementedException) 
+        let adoObjectsFactory = Microsoft.Data.SqlClient.SqlClientFactory.Instance
 #else
-        let adoObjectsFactory = DbProviderFactories.GetFactory( providerName: string)
+
+        let adoObjectsFactory = 
+            try 
+                DbProviderFactories.GetFactory( providerName: string)
+            with 
+            | _ -> Microsoft.Data.SqlClient.SqlClientFactory.Instance
+#endif
         use conn = adoObjectsFactory.CreateConnection() 
         conn.ConnectionString <- connStr
         conn.Open()
@@ -266,7 +274,7 @@ type SqlEnumProvider(config : TypeProviderConfig) as this =
         tempAssembly.AddTypes [ providedEnumType ]
         providedEnumType
 
-#endif
+//#endif
 
     //Quotation factories
     

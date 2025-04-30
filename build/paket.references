@@ -14,3 +14,4 @@ FSharp.Core
 FSharp.Formatting
 NuGet.CommandLine
 System.Data.SqlClient
+System.Configuration.ConfigurationManager

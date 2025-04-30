@@ -5,4 +5,4 @@ group Net40
     System.Configuration.ConfigurationManager
     System.Text.Json
     Microsoft.SqlServer.Server
-
+    Microsoft.Identity.Client
