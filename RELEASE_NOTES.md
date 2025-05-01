@@ -3,6 +3,11 @@
 * Using Microsoft.Data.SqlClient
 * NET 8.0 compatibility
 
+#### 2.1.3 April 30, 2024
+
+* Issue #440 Toolchain and SDK adjustments, deprecated runtime support for net40
+* Contributor: Tuomas Hietanen (https://github.com/Thorium)
+
 #### 2.1.2 May 08, 2022
 
 * Issue #420 fix "TVP Column Ordering is incorrect as of version 2.1.0"
