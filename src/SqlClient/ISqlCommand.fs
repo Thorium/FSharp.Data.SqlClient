@@ -234,7 +234,7 @@ type ``ISqlCommand Implementation``(cfg: DesignTimeConfig, connection: Connectio
 
                         //done via reflection because not implemented on Mono
                         
-                        let sqlDataRecordType = typeof<IDbCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
+                        let sqlDataRecordType = typeof<System.Data.SqlClient.SqlCommand>.Assembly.GetType("Microsoft.SqlServer.Server.SqlDataRecord", throwOnError = true)
                         let records = typeof<Linq.Enumerable>.GetMethod("Cast").MakeGenericMethod(sqlDataRecordType).Invoke(null, [| value |]) 
                         let hasAny = 
                             let anyMeth = 
